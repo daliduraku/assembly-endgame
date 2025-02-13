@@ -14,7 +14,7 @@ function App() {
     )
   }
 
-  const languagesElements = languages.map(lang => {
+  const languageElements = languages.map(lang => {
     const styles = {
       backgroundColor : lang.backgroundColor,
       color: lang.color
@@ -30,12 +30,40 @@ function App() {
     )
   })
 
+  const letterElements = alphabet.split("").map(letter => (
+    <button
+      key={letter}
+      onClick={() => addGuessedLetter(letter)}
+    >
+      {letter.toUpperCase()}
+    </button>
+  ))
+
 
 
 
   return (
-    <>
-    </>
+    <main>
+      <header>
+        <h1>Assembly: Endgame</h1>
+        <p>Guess the word within 8 attempts to keep the
+        programming world safe from Assembly!</p>
+      </header>
+      <section className="game-status">
+        <h2>You win!</h2>
+        <p>Well done! 🎉</p>
+      </section>
+      <section className="language-chips">
+        {languageElements}
+      </section>
+      <section className="word">
+        {letterElements}
+      </section>
+      <section className="keyboard">
+        {keyboardElements}
+      </section>
+      <button className="new-game">New Game</button>
+    </main>
   )
 }
 
