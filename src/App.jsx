@@ -130,7 +130,13 @@ function App() {
 
   return (
     <main>
-       { isGameWon && <Confetti />}
+       {
+        isGameWon && 
+        <Confetti
+          recycle={false}
+          numberOfPieces={1000}
+        />
+      }
       <header>
         <h1>Assembly: Endgame</h1>
         <p>Guess the word within 8 attempts to keep the
