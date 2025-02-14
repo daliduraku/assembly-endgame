@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { languages } from "./languages"
 import { clsx } from 'clsx'
+import { getFarewellText } from "./utils"
 
 function App() {
 
