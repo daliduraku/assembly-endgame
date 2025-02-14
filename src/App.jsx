@@ -11,7 +11,7 @@ function App() {
 
   // Derived values
   const wrongGuessCount = guessedLetters.filter(letter => currentWord.includes(letter)).length
-
+  console.log(wrongGuessCount)
 
   // Static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -23,14 +23,18 @@ function App() {
     )
   }
 
-  const languageElements = languages.map(lang => {
+  const languageElements = languages.map((lang, index) => {
     const styles = {
       backgroundColor : lang.backgroundColor,
       color: lang.color
     }
+
+    const className = clsx("chip", {
+      lost: index < wrongGuessCount
+    })
     return(
       <span
-        className='chip'
+        className={className}
         style={styles}
         key={lang.name}
       >
