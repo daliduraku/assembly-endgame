@@ -12,12 +12,11 @@ function App() {
   // Derived values
   const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
   console.log(wrongGuessCount)
-
   const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
-
   const isGameLost = wrongGuessCount >= languages.length - 1
-
   const isGameOver = isGameLost || isGameWon
+  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
+  const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
 
   // Static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -78,14 +77,19 @@ function App() {
 
   const gameStatusClass = clsx("game-status", {
     won: isGameWon,
-    lost: isGameLost
+    lost: isGameLost,
+    farewell: !isGameOver && isLastGuessIncorrect
   })
 
 
   function renderGameStatus(){
-    if(!isGameOver){
-      return null
-    }
+    if (!isGameOver && isLastGuessIncorrect) {
+      return (
+        <p className="farewell-message">
+          {getFarewellText(languages[wrongGuessCount - 1].name)}
+        </p>
+      )
+    } 
 
     if(isGameWon){
       return(
