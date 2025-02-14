@@ -3,9 +3,17 @@ import { languages } from "./languages"
 import { clsx } from 'clsx'
 
 function App() {
+
+  // State values
   const [currentWord, setCurrentWord] = useState("react")
   const [guessedLetters, setGuessedLetters] = useState([])
 
+
+  // Derived values
+  const wrongGuessCount = guessedLetters.filter(letter => currentWord.includes(letter)).length
+
+
+  // Static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
   function addGuessedLetter(letter) {
@@ -35,7 +43,7 @@ function App() {
     <span key={index}>
         {guessedLetters.includes(letter) ? letter.toUpperCase() : ""}
     </span>
-))
+  ))
 
   const keyboardElements = alphabet.split("").map(letter => {
     const isGuessed = guessedLetters.includes(letter)
@@ -56,9 +64,7 @@ function App() {
         {letter.toUpperCase()}
       </button>
     )
-})
-
-
+  })
 
 
   return (
