@@ -67,6 +67,7 @@ function App() {
     
     return(
       <button
+      disabled={isGameWon}
       className={className}
       key={letter}
       onClick={() => addGuessedLetter(letter)}
@@ -92,21 +93,24 @@ function App() {
       )
     } 
 
-    if(isGameWon){
-      return(
+    if (isGameWon) {
+      return (
         <>
           <h2>You win!</h2>
           <p>Well done! 🎉</p>
         </>
       )
-    }else {
-      return(
-        <>
-          <h2>Game over!</h2>
-          <p>You lose! Better start learning Assembly 😭</p>
-        </>
-      )
+    } 
+    if (isGameLost) {
+        return (
+          <>
+            <h2>Game over!</h2>
+            <p>You lose! Better start learning Assembly 😭</p>
+          </>
+        )
     }
+  
+    return null
   }
 
   return (
