@@ -30,6 +30,11 @@ function App() {
     )
   }
 
+  function startNewGame(){
+    setCurrentWord(randomWord())
+    setGuessedLetters([])
+  }
+
   const languageElements = languages.map((lang, index) => {
     const styles = {
       backgroundColor : lang.backgroundColor,
@@ -155,7 +160,7 @@ function App() {
       <section className="keyboard">
         {keyboardElements}
       </section>
-      {isGameOver && <button className="new-game">New Game</button>}
+      {isGameOver && <button onClick={startNewGame} className="new-game">New Game</button>}
     </main>
   )
 }
