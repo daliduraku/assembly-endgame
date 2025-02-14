@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { languages } from "./languages"
 import { clsx } from 'clsx'
 import { getFarewellText, randomWord } from "./utils"
+import Confetti from "react-confetti"
 
 function App() {
 
@@ -129,6 +130,7 @@ function App() {
 
   return (
     <main>
+       { isGameWon && <Confetti />}
       <header>
         <h1>Assembly: Endgame</h1>
         <p>Guess the word within 8 attempts to keep the
