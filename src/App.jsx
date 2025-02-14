@@ -67,7 +67,7 @@ function App() {
     
     return(
       <button
-      disabled={isGameWon}
+      disabled={isGameOver}
       className={className}
       key={letter}
       onClick={() => addGuessedLetter(letter)}
