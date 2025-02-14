@@ -11,10 +11,11 @@ function App() {
 
 
   // Derived values
+  const numGuessesLeft = languages.length - 1
   const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
   console.log(wrongGuessCount)
   const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
-  const isGameLost = wrongGuessCount >= languages.length - 1
+  const isGameLost = wrongGuessCount >= numGuessesLeft
   const isGameOver = isGameLost || isGameWon
   const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
   const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
@@ -131,12 +132,19 @@ function App() {
       <section className="word">
         {letterElements}
       </section>
-
+      {/* Combined visually-hidden aria-live region for status updates */}
       <section 
         className="sr-only" 
         aria-live="polite" 
         role="status"
       >
+        <p>
+          {currentWord.includes(lastGuessedLetter) ?
+            `Correct! The letter ${lastGuessedLetter} is in the word.` :
+            `Sorry, the letter ${lastGuessedLetter} is not in the word.`
+          } 
+          You have {numGuessesLeft} attempts left.
+        </p>
         <p>Current word: {currentWord.split("").map(letter => 
         guessedLetters.includes(letter) ? letter + "." : "blank.")
         .join(" ")}</p>
