@@ -1,6 +1,6 @@
 import { words } from "./words"
 
-function randomWord(){
+export function randomWord(){
     const randomIndex = Math.floor(Math.random() * words.length)
     return words[randomIndex]
 }
