@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { languages } from "./languages"
 import { clsx } from 'clsx'
 import { getFarewellText, randomWord } from "./utils"
-import Confetti from "react-confetti"
+import Confetti from 'react-confetti'
 
 function App() {
 
@@ -130,7 +130,7 @@ function App() {
 
   return (
     <main>
-       {
+      {
         isGameWon && 
         <Confetti
           recycle={false}
