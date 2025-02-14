@@ -10,7 +10,7 @@ function App() {
 
 
   // Derived values
-  const wrongGuessCount = guessedLetters.filter(letter => currentWord.includes(letter)).length
+  const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
   console.log(wrongGuessCount)
 
   // Static values
